@@ -10,9 +10,10 @@
   (cond
     (neg? num) (throw (IllegalArgumentException. "negative value is an error"))
     (zero? num) (throw (IllegalArgumentException. "zero is an error"))
-    :else (loop
-              [count 0
-               n num]
-            (if (>= 1 n)
-              count
-              (recur (inc count) (calculate-next-val n))))))
+    :else (reduce
+           (fn [count n]
+             (if (>= 1 n)
+               (reduced count)
+               (inc count)))
+           0
+           (iterate calculate-next-val num))))

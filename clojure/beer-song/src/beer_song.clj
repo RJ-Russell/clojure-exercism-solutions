@@ -40,10 +40,4 @@
   end is not given, the whole song from start is sung."
   ([start] (sing start 0))
   ([start end]
-   (loop
-       [curr start
-        result []]
-     (if (= curr end)
-       (apply str (conj result (verse curr)))
-       (recur
-        (dec curr) (conj result (verse curr) "\n"))))))
+   (clojure.string/join "\n" (map (fn [n] (verse n)) (range start (dec end) -1)))))

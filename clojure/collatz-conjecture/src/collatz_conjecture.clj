@@ -7,9 +7,8 @@
 
 (defn collatz
   [num]
-  (if (pos-int? num)
-    (reduce
-     (fn [count n] (if (>= 1 n) (reduced count) (inc count)))
-     0
-     (iterate calculate-next-val num))
-    (throw (IllegalArgumentException. "Function requires a positive integer value."))))
+  {:pre [(pos-int? num)]}
+  (reduce
+   (fn [count n] (if (>= 1 n) (reduced count) (inc count)))
+   0
+   (iterate calculate-next-val num)))

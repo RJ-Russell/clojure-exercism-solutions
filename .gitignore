@@ -1,6 +1,5 @@
 **/.lein-failures
 
-**/test/
 **/target/
 **/.solution.json
 **/README.md

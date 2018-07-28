@@ -1,10 +1,10 @@
 (ns nucleotide-count)
 
-(def nucleotides {\A 0 \C 0 \G 0 \T 0})
-
 (defn count [nucleotide strand]
-  (get (frequencies strand) nucleotide))
+  {:post [((complement nil?) %)]}
+  (if (clojure.string/blank? strand) 0 (get (frequencies strand) nucleotide)))
+
 
 (defn nucleotide-counts
-  [strand]
-  ()
+[strand]
+(merge {\A 0 \T 0 \C 0 \G 0} (frequencies strand)))

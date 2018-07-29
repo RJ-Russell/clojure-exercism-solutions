@@ -1,11 +1,6 @@
 (ns phone-number)
 
-;; Length less than 10, return all zeros
-;; Lenght 11, but first character is not a 1, return all zeros
-;; Length 11, first character is a one, return the string minus the first character
-;; Otherwise return the string
-
-(defn invalid-number?
+(defn- invalid-number?
   [s]
   (let [num-size (count s)]
     (or
@@ -22,8 +17,10 @@
              (if (= 11 (count n-coll)) (rest n-coll) n-coll)))))
 
 (defn area-code [num-string] 
-  )
+  (subs (number num-string) 0 3))
 
-(defn pretty-print [num-string] ;; <- arglist goes here
-  ;; your code goes here
-  )
+(defn pretty-print
+  [num-string]
+  (let [ac (area-code num-string)
+        num (subs (number num-string) 3)]
+    (str "(" ac ") " (subs num 0 3) "-" (subs num 3))))

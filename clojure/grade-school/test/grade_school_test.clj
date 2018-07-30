@@ -4,17 +4,13 @@
 
 (def db {})
 
-(deftest add-student
-  (is (= {2 ["Aimee"]} (grade-school/add db "Aimee" 2))))
-
-(deftest add-more-students-in-same-class
+(deftest add-student-test
+  (is (= {2 ["Aimee"]} (grade-school/add db "Aimee" 2)))
   (is (= {2 ["James", "Blair", "Paul"]}
          (-> db
              (grade-school/add "James" 2)
              (grade-school/add "Blair" 2)
-             (grade-school/add "Paul" 2)))))
-
-(deftest add-students-to-different-grades
+             (grade-school/add "Paul" 2))))
   (is (= {3 ["Chelsea"] 7 ["Logan"]}
          (-> db
              (grade-school/add "Chelsea" 3)

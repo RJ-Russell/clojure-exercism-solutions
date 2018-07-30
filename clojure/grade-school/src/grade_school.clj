@@ -1,13 +1,17 @@
 (ns grade-school)
 
-(defn grade [school grade]  ;; <- arglist goes here
-    ;; your code goes here
-)
+(defn grade
+  [school grade]
+  (get school grade []))
 
-(defn add [school name grade]  ;; <- arglist goes here
-    ;; your code goes here
-)
+(defn add
+  [school name grade]
+  (assoc school grade
+         (if (school grade)
+           (conj (get school grade) name)
+           (conj [] name))))
 
-(defn sorted [school]  ;; <- arglist goes here
-    ;; your code goes here
-)
+(defn sorted [school]
+  (into (sorted-map)
+        (into {} (for [[k v] school] [k (sort v)]))))
+

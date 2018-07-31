@@ -12,9 +12,11 @@
 
 (defn response-for
   [s]
-  (cond
-    (clojure.string/blank? s) "Fine. Be that way!"
-    (and (all-caps? s) (is-question? s)) "Calm down, I know what I'm doing!"
-    (is-question? s) "Sure."
-    (all-caps? s) "Whoa, chill out!"
-    :else "Whatever."))
+  (let [caps? (all-caps? s)
+        question? (is-question? s)]
+    (cond
+      (clojure.string/blank? s) "Fine. Be that way!"
+      (and caps? question?) "Calm down, I know what I'm doing!"
+      question? "Sure."
+      caps? "Whoa, chill out!"
+      :else "Whatever.")))

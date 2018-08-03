@@ -1,0 +1,7 @@
+**/.lein-failures
+
+**/target/
+**/.solution.json
+**/README.md
+**/project.clj
+**/.nrepl-port

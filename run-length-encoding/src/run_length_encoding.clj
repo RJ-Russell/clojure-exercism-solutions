@@ -2,9 +2,8 @@
 
 (defn- element->str
   [coll]
-  (let [cnt (count coll)
-        first (first coll)]
-    (if (= cnt 1) (str first) (str cnt first))))
+  (let [cnt (count coll)]
+    (str (when (> cnt 1) cnt) (first coll))))
 
 (defn run-length-encode
   "encodes a string with run-length-encoding"
